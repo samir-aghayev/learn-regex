@@ -54,11 +54,11 @@ validate etmək üçün aşağıdakı regex-dən istifadə edə bilərik:
 </p>
 
 Yuxarıdakı regex `john_doe`, `jo-hn_doe` və `john12_as` string-lərini qəbul edir.
-`Jo` isə match olmur, çünki bu string-də böyük hərf var və o, həm də çox qısadır.
+`Jo` isə uyğun gəlmir, çünki bu string-də böyük hərf var və o, həm də çox qısadır.
 
 ## Mündəricat
 
-- [Əsas matcher-lər](#1-əsas-matcher-lər)
+- [Əsas uyğunluqlar](#1-əsas-uyğunluqlar)
 - [Meta character-lər](#2-meta-character-lər)
   - [Nöqtə](#21-nöqtə)
   - [Character set-lər](#22-character-set-lər)
@@ -85,9 +85,9 @@ Yuxarıdakı regex `john_doe`, `jo-hn_doe` və `john12_as` string-lərini qəbul
   - [Case insensitive](#51-case-insensitive)
   - [Global search](#52-global-search)
   - [Multiline](#53-multiline)
-- [Greedy və lazy matching](#6-greedy-və-lazy-matching)
+- [Greedy və lazy uyğunluq](#6-greedy-və-lazy-uyğunluq)
 
-## 1. Əsas matcher-lər
+## 1. Əsas uyğunluqlar
 
 Regex sadəcə mətndə axtarış etmək üçün istifadə etdiyimiz simvollar şablonudur.
 Məsələn, `the` regex-i belə oxunur: `t` hərfi, ardınca `h` hərfi, ardınca `e` hərfi.
@@ -98,10 +98,10 @@ Məsələn, `the` regex-i belə oxunur: `t` hərfi, ardınca `h` hərfi, ardınc
 
 [Regex-i test edin](https://regex101.com/r/dmRygT/1)
 
-`123` regex-i `123` string-i ilə match olur. Regex input string ilə müqayisə
+`123` regex-i `123` string-i ilə uyğun gəlir. Regex input string ilə müqayisə
 olunarkən regex-dəki hər simvol input string-dəki hər simvolla ardıcıl olaraq
 tutuşdurulur. Regex-lər adətən case-sensitive olur, yəni `The` regex-i `the`
-string-i ilə match olmur.
+string-i ilə uyğun gəlmir.
 
 <pre>
 "The" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
@@ -118,24 +118,24 @@ yazılır. Meta character-lər bunlardır:
 
 |Meta character|Təsviri|
 |:----:|----|
-|.|Nöqtə sətir sonu istisna olmaqla istənilən tək simvolla match olur.|
-|[ ]|Character class. Kvadrat mötərizələr arasındakı istənilən simvolla match olur.|
-|[^ ]|Negated character class. Kvadrat mötərizələr arasında olmayan istənilən simvolla match olur.|
-|*|Özündən əvvəlki simvolun 0 və ya daha çox təkrarı ilə match olur.|
-|+|Özündən əvvəlki simvolun 1 və ya daha çox təkrarı ilə match olur.|
+|.|Nöqtə sətir sonu istisna olmaqla istənilən tək simvolla uyğun gəlir.|
+|[ ]|Character class. Kvadrat mötərizələr arasındakı istənilən simvolla uyğun gəlir.|
+|[^ ]|Negated character class. Kvadrat mötərizələr arasında olmayan istənilən simvolla uyğun gəlir.|
+|*|Özündən əvvəlki simvolun 0 və ya daha çox təkrarı ilə uyğun gəlir.|
+|+|Özündən əvvəlki simvolun 1 və ya daha çox təkrarı ilə uyğun gəlir.|
 |?|Özündən əvvəlki simvolu ixtiyari edir.|
-|{n,m}|Fiqurlu mötərizələr. Özündən əvvəlki simvolun ən azı "n", ən çoxu "m" təkrarı ilə match olur.|
-|(xyz)|Character group. xyz simvolları ilə məhz bu ardıcıllıqla match olur.|
-|&#124;|Alternation. Ya simvoldan əvvəlki, ya da simvoldan sonrakı simvollarla match olur.|
-|&#92;|Növbəti simvolu escape edir. Bu, rezerv olunmuş simvollarla match etməyə imkan verir: <code>[ ] ( ) { } . * + ? ^ $ \ &#124;</code>|
-|^|Input-un əvvəli ilə match olur.|
-|$|Input-un sonu ilə match olur.|
+|{n,m}|Fiqurlu mötərizələr. Özündən əvvəlki simvolun ən azı "n", ən çoxu "m" təkrarı ilə uyğun gəlir.|
+|(xyz)|Character group. xyz simvolları ilə məhz bu ardıcıllıqla uyğun gəlir.|
+|&#124;|Alternation. Ya simvoldan əvvəlki, ya da simvoldan sonrakı simvollarla uyğun gəlir.|
+|&#92;|Növbəti simvolu escape edir. Bu, rezerv olunmuş simvollarla uyğunluq tapmağa imkan verir: <code>[ ] ( ) { } . * + ? ^ $ \ &#124;</code>|
+|^|Input-un əvvəli ilə uyğun gəlir.|
+|$|Input-un sonu ilə uyğun gəlir.|
 
 ## 2.1 Nöqtə
 
 Nöqtə `.` meta character-in ən sadə nümunəsidir. `.` meta character-i istənilən
-tək simvolla match olur. O, carriage return və ya newline simvolları ilə match
-olmur. Məsələn, `.ar` regex-i belə oxunur: istənilən simvol, ardınca `a` hərfi,
+tək simvolla uyğun gəlir. O, carriage return və ya newline simvolları ilə uyğun
+gəlmir. Məsələn, `.ar` regex-i belə oxunur: istənilən simvol, ardınca `a` hərfi,
 ardınca `r` hərfi.
 
 <pre>
@@ -189,8 +189,8 @@ vəziyyətlərdə fərqli davranır.
 
 ### 2.3.1 Ulduz
 
-`*` simvolu özündən əvvəlki matcher-in sıfır və ya daha çox təkrarı ilə match
-olur. `a*` regex-i belə oxunur: özündən əvvəlki kiçik `a` simvolunun sıfır və ya
+`*` simvolu özündən əvvəlki elementin sıfır və ya daha çox təkrarı ilə uyğun
+gəlir. `a*` regex-i belə oxunur: özündən əvvəlki kiçik `a` simvolunun sıfır və ya
 daha çox təkrarı. Amma o, character set və ya class-dan sonra gələrsə, bütün
 character set-in təkrarlarını tapır. Məsələn, `[a-z]*` regex-i belə oxunur:
 ardıcıl gələn istənilən sayda kiçik hərf.
@@ -201,9 +201,9 @@ ardıcıl gələn istənilən sayda kiçik hərf.
 
 [Regex-i test edin](https://regex101.com/r/7m8me5/1)
 
-`*` simvolu istənilən simvollar string-i ilə match etmək üçün `.` meta
+`*` simvolu istənilən simvollar string-i ilə uyğunluq tapmaq üçün `.` meta
 character-i ilə birlikdə `.*` şəklində istifadə oluna bilər. `*` simvolu
-whitespace simvollarından ibarət string ilə match etmək üçün `\s` whitespace
+whitespace simvollarından ibarət string ilə uyğunluq tapmaq üçün `\s` whitespace
 simvolu ilə birlikdə istifadə oluna bilər. Məsələn, `\s*cat\s*` ifadəsi belə
 oxunur: sıfır və ya daha çox boşluq, ardınca kiçik `c`, ardınca kiçik `a`,
 ardınca kiçik `t`, ardınca sıfır və ya daha çox boşluq.
@@ -216,7 +216,7 @@ ardınca kiçik `t`, ardınca sıfır və ya daha çox boşluq.
 
 ### 2.3.2 Üstəgəl
 
-`+` simvolu özündən əvvəlki simvolun bir və ya daha çox təkrarı ilə match olur.
+`+` simvolu özündən əvvəlki simvolun bir və ya daha çox təkrarı ilə uyğun gəlir.
 Məsələn, `c.+t` regex-i belə oxunur: kiçik `c`, ardınca ən azı bir simvol,
 ardınca kiçik `t`. Qeyd etmək lazımdır ki, burada `t` cümlədəki sonuncu `t`-dir.
 
@@ -229,7 +229,7 @@ ardınca kiçik `t`. Qeyd etmək lazımdır ki, burada `t` cümlədəki sonuncu 
 ### 2.3.3 Sual işarəsi
 
 Regex-də `?` meta character-i özündən əvvəlki simvolu ixtiyari edir. Bu simvol
-özündən əvvəlki simvolun sıfır və ya bir nümunəsi ilə match olur. Məsələn,
+özündən əvvəlki simvolun sıfır və ya bir nümunəsi ilə uyğun gəlir. Məsələn,
 `[T]?he` regex-i belə oxunur: ixtiyari böyük `T`, ardınca kiçik `h`, ardınca
 kiçik `e`.
 
@@ -250,7 +250,7 @@ kiçik `e`.
 Regex-də fiqurlu mötərizələr (quantifier-lər də adlanır) bir simvolun və ya
 simvollar qrupunun neçə dəfə təkrarlana biləcəyini təyin etmək üçün istifadə
 olunur. Məsələn, `[0-9]{2,3}` regex-i belə oxunur: 0-dan 9-a qədər olan ən azı
-2, ən çoxu 3 rəqəmlə match ol.
+2, ən çoxu 3 rəqəmlə uyğun gəl.
 
 <pre>
 "[0-9]{2,3}" => The number was 9.<a href="#learn-regex"><strong>999</strong></a>7 but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
@@ -259,8 +259,8 @@ olunur. Məsələn, `[0-9]{2,3}` regex-i belə oxunur: 0-dan 9-a qədər olan ə
 [Regex-i test edin](https://regex101.com/r/juM86s/1)
 
 İkinci rəqəmi yazmaya bilərik. Məsələn, `[0-9]{2,}` regex-i belə oxunur: 2 və ya
-daha çox rəqəmlə match ol. Vergülü də silsək, `[0-9]{3}` regex-i belə oxunur:
-dəqiq 3 rəqəmlə match ol.
+daha çox rəqəmlə uyğun gəl. Vergülü də silsək, `[0-9]{3}` regex-i belə oxunur:
+dəqiq 3 rəqəmlə uyğun gəl.
 
 <pre>
 "[0-9]{2,}" => The number was 9.<a href="#learn-regex"><strong>9997</strong></a> but we rounded it off to <a href="#learn-regex"><strong>10</strong></a>.0.
@@ -280,7 +280,7 @@ Capturing group mötərizələr `(...)` daxilində yazılan alt şablonlar qrupu
 Əvvəl qeyd etdiyimiz kimi, regex-də bir simvoldan sonra quantifier qoysaq, o,
 özündən əvvəlki simvolu təkrarlayacaq. Amma quantifier-i capturing group-dan
 sonra qoysaq, o, bütün capturing group-u təkrarlayır. Məsələn, `(ab)*` regex-i
-"ab" simvollarının sıfır və ya daha çox təkrarı ilə match olur. Capturing group
+"ab" simvollarının sıfır və ya daha çox təkrarı ilə uyğun gəlir. Capturing group
 daxilində alternation `|` meta character-indən də istifadə edə bilərik. Məsələn,
 `(c|g|p)ar` regex-i belə oxunur: kiçik `c`, `g` və ya `p`, ardınca `a`,
 ardınca `r`.
@@ -291,16 +291,16 @@ ardınca `r`.
 
 [Regex-i test edin](https://regex101.com/r/tUxrBG/1)
 
-Qeyd edək ki, capturing group-lar simvollarla sadəcə match olmur, həm də onları
+Qeyd edək ki, capturing group-lar simvollarla sadəcə uyğun gəlmir, həm də onları
 proqramlaşdırma dilində istifadə etmək üçün capture edir. Bu dil Python,
 JavaScript və ya regex-ləri dəstəkləyən demək olar ki, istənilən dil ola bilər.
 
 ### 2.5.1 Non-capturing group-lar
 
-Non-capturing group simvollarla match olan, lakin group-u capture etməyən
+Non-capturing group simvollarla uyğun gələn, lakin group-u capture etməyən
 capturing group-dur. Non-capturing group mötərizələr `(...)` daxilində `?` və
 ardınca `:` ilə göstərilir. Məsələn, `(?:c|g|p)ar` regex-i `(c|g|p)ar` ilə
-eyni simvollarla match olur, lakin capturing group yaratmır.
+eyni simvollarla uyğun gəlir, lakin capturing group yaratmır.
 
 <pre>
 "(?:c|g|p)ar" => The <a href="#learn-regex"><strong>car</strong></a> is <a href="#learn-regex"><strong>par</strong></a>ked in the <a href="#learn-regex"><strong>gar</strong></a>age.
@@ -323,7 +323,7 @@ səviyyəsində, alternation isə ifadə səviyyəsində işləyir. Məsələn,
 `(T|t)he|car` regex-i belə oxunur: ya (böyük `T` və ya kiçik `t`, ardınca kiçik
 `h`, ardınca kiçik `e`), YA DA (kiçik `c`, ardınca kiçik `a`, ardınca kiçik
 `r`). Aydınlıq üçün mötərizələrdən istifadə etdim ki, mötərizədəki ifadələrdən
-hər hansı biri ödənərsə, match baş verəcəyini göstərim.
+hər hansı biri ödənərsə, uyğunluq tapılacağını göstərim.
 
 <pre>
 "(T|t)he|car" => <a href="#learn-regex"><strong>The</strong></a> <a href="#learn-regex"><strong>car</strong></a> is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
@@ -334,12 +334,12 @@ hər hansı biri ödənərsə, match baş verəcəyini göstərim.
 ## 2.7 Xüsusi simvolları escape etmək
 
 Regex-də backslash `\` növbəti simvolu escape etmək üçün istifadə olunur. Bu,
-`{ } [ ] / \ + * . $ ^ | ?` kimi rezerv olunmuş simvolları match olunan simvol
-kimi istifadə etməyə imkan verir. Bu xüsusi simvollardan birini match olunan
+`{ } [ ] / \ + * . $ ^ | ?` kimi rezerv olunmuş simvolları uyğun gələn simvol
+kimi istifadə etməyə imkan verir. Bu xüsusi simvollardan birini uyğun gələn
 simvol kimi istifadə etmək üçün onun qarşısına `\` əlavə edin.
 
-Məsələn, `.` regex-i newline istisna olmaqla istənilən simvolla match olmaq
-üçün istifadə olunur. İndi input string-də `.` ilə match olmaq üçün
+Məsələn, `.` regex-i newline istisna olmaqla istənilən simvolla uyğun gəlmək
+üçün istifadə olunur. İndi input string-də `.` ilə uyğun gəlmək üçün
 `(f|c|m)at\.?` regex-i belə oxunur: kiçik `f`, `c` və ya `m`, ardınca kiçik
 `a`, ardınca kiçik `t`, ardınca ixtiyari `.` simvolu.
 
@@ -351,18 +351,18 @@ Məsələn, `.` regex-i newline istisna olmaqla istənilən simvolla match olmaq
 
 ## 2.8 Anchor-lar
 
-Regex-də match olunan simvolun input string-in ilk və ya son simvolu olub-olmadığını
+Regex-də uyğun gələn simvolun input string-in ilk və ya son simvolu olub-olmadığını
 yoxlamaq üçün anchor-lardan istifadə edirik. Anchor-lar iki növdür: birinci növ
-match olunan simvolun input-un ilk simvolu olub-olmadığını yoxlayan caret `^`,
-ikinci növ isə match olunan simvolun input string-in son simvolu olub-olmadığını
+uyğun gələn simvolun input-un ilk simvolu olub-olmadığını yoxlayan caret `^`,
+ikinci növ isə uyğun gələn simvolun input string-in son simvolu olub-olmadığını
 yoxlayan dollar işarəsi `$`-dır.
 
 ### 2.8.1 Caret
 
-Caret simvolu `^` match olunan simvolun input string-in ilk simvolu
+Caret simvolu `^` uyğun gələn simvolun input string-in ilk simvolu
 olub-olmadığını yoxlamaq üçün istifadə olunur. `^a` regex-ini ('a' ilk simvol
-olmalıdır deməkdir) `abc` string-inə tətbiq etsək, o, `a` ilə match olacaq.
-Amma `^b` regex-ini yuxarıdakı string-ə tətbiq etsək, heç nə ilə match olmayacaq,
+olmalıdır deməkdir) `abc` string-inə tətbiq etsək, o, `a` ilə uyğun gələcək.
+Amma `^b` regex-ini yuxarıdakı string-ə tətbiq etsək, heç nə ilə uyğun gəlməyəcək,
 çünki `abc` string-ində "b" ilk simvol deyil. Gəlin başqa bir regex-ə, `^(T|t)he`
 regex-inə baxaq. O belə oxunur: böyük `T` və ya kiçik `t` string-in ilk simvolu
 olmalıdır, ardınca kiçik `h`, ardınca kiçik `e`.
@@ -381,9 +381,9 @@ olmalıdır, ardınca kiçik `h`, ardınca kiçik `e`.
 
 ### 2.8.2 Dollar işarəsi
 
-Dollar işarəsi `$` match olunan simvolun string-in son simvolu olub-olmadığını
+Dollar işarəsi `$` uyğun gələn simvolun string-in son simvolu olub-olmadığını
 yoxlamaq üçün istifadə olunur. Məsələn, `(at\.)$` regex-i belə oxunur: kiçik
-`a`, ardınca kiçik `t`, ardınca `.` simvolu və match string-in sonunda
+`a`, ardınca kiçik `t`, ardınca `.` simvolu və uyğunluq string-in sonunda
 olmalıdır.
 
 <pre>
@@ -406,18 +406,18 @@ shorthand-lər mövcuddur:
 |Shorthand|Təsviri|
 |:----:|----|
 |.|Newline istisna olmaqla istənilən simvol|
-|\w|Alfanumerik simvollarla match olur: `[a-zA-Z0-9_]`|
-|\W|Alfanumerik olmayan simvollarla match olur: `[^\w]`|
-|\d|Rəqəmlərlə match olur: `[0-9]`|
-|\D|Rəqəm olmayan simvollarla match olur: `[^\d]`|
-|\s|Whitespace simvolları ilə match olur: `[\t\n\f\r\p{Z}]`|
-|\S|Whitespace olmayan simvollarla match olur: `[^\s]`|
+|\w|Alfanumerik simvollarla uyğun gəlir: `[a-zA-Z0-9_]`|
+|\W|Alfanumerik olmayan simvollarla uyğun gəlir: `[^\w]`|
+|\d|Rəqəmlərlə uyğun gəlir: `[0-9]`|
+|\D|Rəqəm olmayan simvollarla uyğun gəlir: `[^\d]`|
+|\s|Whitespace simvolları ilə uyğun gəlir: `[\t\n\f\r\p{Z}]`|
+|\S|Whitespace olmayan simvollarla uyğun gəlir: `[^\s]`|
 
 ## 4. Lookaround-lar
 
 Lookbehind və lookahead-lər (lookaround-lar da adlanır) ***non-capturing
-group***-ların xüsusi növləridir (şablonla match olmaq üçün istifadə olunur,
-lakin onu match siyahısına daxil etmir). Lookaround-lar bir şablondan əvvəl və
+group***-ların xüsusi növləridir (şablonla uyğun gəlmək üçün istifadə olunur,
+lakin onu uyğunluqlar siyahısına daxil etmir). Lookaround-lar bir şablondan əvvəl və
 ya sonra başqa bir şablon gəlməli olduqda istifadə olunur. Məsələn, təsəvvür
 edin ki, `$4.44 and $10.88` string-indən qarşısında `$` simvolu olan bütün
 rəqəmləri almaq istəyirik. Bunun üçün `(?<=\$)[0-9\.]*` regex-indən istifadə
@@ -434,15 +434,15 @@ olan bütün rəqəmləri al. Regex-də istifadə olunan lookaround-lar bunlard�
 ### 4.1 Positive lookahead
 
 Positive lookahead ifadənin birinci hissəsindən sonra lookahead ifadəsinin
-gəlməli olduğunu təsdiq edir (assert edir). Qaytarılan match yalnız ifadənin
-birinci hissəsi ilə match olan mətni ehtiva edir. Positive lookahead təyin etmək
+gəlməli olduğunu təsdiq edir (assert edir). Qaytarılan uyğunluq yalnız ifadənin
+birinci hissəsi ilə uyğun gələn mətni ehtiva edir. Positive lookahead təyin etmək
 üçün mötərizələrdən istifadə olunur. Həmin mötərizələrin daxilində sual işarəsi
 və bərabərlik işarəsi bu şəkildə yazılır: `(?=...)`. Lookahead ifadəsi
 mötərizələrin daxilində bərabərlik işarəsindən sonra yazılır. Məsələn,
 `(T|t)he(?=\sfat)` regex-i belə oxunur: ya kiçik `t`, ya da böyük `T`, ardınca
-`h` hərfi, ardınca `e` hərfi ilə match ol. Mötərizələrdə positive lookahead
+`h` hərfi, ardınca `e` hərfi ilə uyğun gəl. Mötərizələrdə positive lookahead
 təyin edirik ki, bu da regex engine-ə `The` və ya `the` ilə yalnız ondan sonra
-`fat` sözü gəldikdə match olmasını bildirir.
+`fat` sözü gəldikdə uyğun gəlməsini bildirir.
 
 <pre>
 "(T|t)he(?=\sfat)" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
@@ -453,7 +453,7 @@ təyin edirik ki, bu da regex engine-ə `The` və ya `the` ilə yalnız ondan so
 ### 4.2 Negative lookahead
 
 Negative lookahead-lər input string-dən ardınca müəyyən şablon gəlməyən bütün
-match-ləri almaq lazım olduqda istifadə olunur. Negative lookahead positive
+uyğunluqları almaq lazım olduqda istifadə olunur. Negative lookahead positive
 lookahead ilə eyni şəkildə yazılır. Yeganə fərq ondan ibarətdir ki, bərabərlik
 işarəsi `=` əvəzinə inkarı bildirmək üçün nida işarəsi `!` istifadə edirik,
 yəni `(?!...)`. Gəlin `(T|t)he(?!\sfat)` regex-inə baxaq. O belə oxunur: input
@@ -468,7 +468,7 @@ sözlərini al.
 
 ### 4.3 Positive lookbehind
 
-Positive lookbehind-lər qarşısında müəyyən şablon olan bütün match-ləri almaq
+Positive lookbehind-lər qarşısında müəyyən şablon olan bütün uyğunluqları almaq
 üçün istifadə olunur. Positive lookbehind-lər `(?<=...)` şəklində yazılır.
 Məsələn, `(?<=(T|t)he\s)(fat|mat)` regex-i belə oxunur: input string-dən
 `The` və ya `the` sözündən sonra gələn bütün `fat` və ya `mat` sözlərini al.
@@ -481,7 +481,7 @@ Məsələn, `(?<=(T|t)he\s)(fat|mat)` regex-i belə oxunur: input string-dən
 
 ### 4.4 Negative lookbehind
 
-Negative lookbehind-lər qarşısında müəyyən şablon olmayan bütün match-ləri almaq
+Negative lookbehind-lər qarşısında müəyyən şablon olmayan bütün uyğunluqları almaq
 üçün istifadə olunur. Negative lookbehind-lər `(?<!...)` şəklində yazılır.
 Məsələn, `(?<!(T|t)he\s)(cat)` regex-i belə oxunur: input string-dən `The` və ya
 `the` sözündən sonra gəlməyən bütün `cat` sözlərini al.
@@ -500,13 +500,13 @@ ayrılmaz hissəsidir.
 
 |Flag|Təsviri|
 |:----:|----|
-|i|Case insensitive: Match böyük-kiçik hərfə həssas olmayacaq.|
-|g|Global search: Yalnız birincini deyil, bütün nümunələri match et.|
+|i|Case insensitive: Uyğunluq axtarışı böyük-kiçik hərfə həssas olmayacaq.|
+|g|Global search: Yalnız birincini deyil, bütün uyğunluqları tap.|
 |m|Multiline: Anchor meta character-ləri hər sətirdə işləyir.|
 
 ### 5.1 Case insensitive
 
-`i` modifier-i case-insensitive matching üçün istifadə olunur. Məsələn,
+`i` modifier-i case-insensitive uyğunluq axtarışı üçün istifadə olunur. Məsələn,
 `/The/gi` regex-i belə oxunur: böyük `T`, ardınca kiçik `h`, ardınca `e`.
 Regex-in sonundakı `i` flag-ı regex engine-ə böyük-kiçik hərf fərqini nəzərə
 almamağı bildirir. Gördüyünüz kimi, `g` flag-ını da əlavə etdik, çünki şablonu
@@ -526,12 +526,12 @@ bütün input string-də axtarmaq istəyirik.
 
 ### 5.2 Global search
 
-`g` modifier-i global match üçün istifadə olunur (birinci match-dən sonra
-dayanmaq əvəzinə bütün match-ləri tapır). Məsələn, `/.(at)/g` regex-i belə
+`g` modifier-i global uyğunluq axtarışı üçün istifadə olunur (birinci uyğunluqdan sonra
+dayanmaq əvəzinə bütün uyğunluqları tapır). Məsələn, `/.(at)/g` regex-i belə
 oxunur: newline istisna olmaqla istənilən simvol, ardınca kiçik `a`, ardınca
 kiçik `t`. Regex-in sonunda `g` flag-ını verdiyimiz üçün o, indi input
-string-də yalnız birinci match-i (default davranış budur) deyil, bütün
-match-ləri tapacaq.
+string-də yalnız birinci uyğunluğu (default davranış budur) deyil, bütün
+uyğunluqları tapacaq.
 
 <pre>
 "/.(at)/" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the mat.
@@ -547,13 +547,13 @@ match-ləri tapacaq.
 
 ### 5.3 Multiline
 
-`m` modifier-i multiline match üçün istifadə olunur. Əvvəl qeyd etdiyimiz kimi,
+`m` modifier-i multiline uyğunluq axtarışı üçün istifadə olunur. Əvvəl qeyd etdiyimiz kimi,
 anchor-lar `(^, $)` şablonun input-un əvvəlində və ya sonunda olub-olmadığını
 yoxlamaq üçün istifadə olunur. Amma anchor-ların hər sətirdə işləməsini
 istəyiriksə, `m` flag-ından istifadə edirik. Məsələn, `/at(.)?$/gm` regex-i
 belə oxunur: kiçik `a`, ardınca kiçik `t` və ixtiyari olaraq newline-dan başqa
 istənilən simvol. `m` flag-ı sayəsində regex engine indi string-dəki hər
-sətrin sonundakı şablonlarla match olur.
+sətrin sonundakı şablonlarla uyğun gəlir.
 
 <pre>
 "/.at(.)?$/" => The fat
@@ -571,10 +571,10 @@ sətrin sonundakı şablonlarla match olur.
 
 [Regex-i test edin](https://regex101.com/r/E88WE2/1)
 
-## 6. Greedy və lazy matching
+## 6. Greedy və lazy uyğunluq
 
-Default olaraq regex greedy match edir, yəni match mümkün qədər uzun olacaq.
-Lazy şəkildə match etmək üçün `?` istifadə edə bilərik, bu halda match mümkün
+Default olaraq regex greedy uyğunluq axtarır, yəni uyğunluq mümkün qədər uzun olacaq.
+Lazy şəkildə uyğunluq tapmaq üçün `?` istifadə edə bilərik, bu halda uyğunluq mümkün
 qədər qısa olacaq.
 
 <pre>
