@@ -44,7 +44,7 @@
 Bir düzenli ifade soldan sağa söz konusu harf öbekleriyle eşleşen bir desendir.
 "Regular expression" söylemesi zor bir tabir olduğundan dolayı, genellikle
 "regex" ya da "regexp" olarak kısaltılmış olarak bulacaksınız. Düzenli ifade bir
-harf öbeğinde ki bir metin değiştirmek, form doğrulamak, bir desen eşleşmesine
+harf öbeğindeki bir metni değiştirmek, form doğrulamak, bir desen eşleşmesine
 dayalı harf öbeğinden bir alt harf öbeği ayıklamak ve çok daha fazlası için
 kullanılır.
 
@@ -60,7 +60,7 @@ kullanıyoruz:
   <img src="../img/regexp-tr.png" alt="Regular expression">
 </p>
 
-Yukardaki düzenli ifade `john_doe`, `jo-hn_doe` ve `john12_as` gibi girişleri kabul edebilir.
+Yukarıdaki düzenli ifade `john_doe`, `jo-hn_doe` ve `john12_as` gibi girişleri kabul edebilir.
 `Jo` girişi uyuşmaz, çünkü harf öbeği büyük harf içeriyor ve aynı zamanda uzunluğu 3 karakterden az.
 
 ## İçindekiler
@@ -69,29 +69,29 @@ Yukardaki düzenli ifade `john_doe`, `jo-hn_doe` ve `john12_as` gibi girişleri 
 - [Meta Karakterler](#2-meta-karakterler)
   - [Nokta](#21-nokta)
   - [Karakter Takımı](#22-karakter-takımı)
-    - [Negatiflenmiş Karakter Seti](#221-negatiflenmiş-karakter-seti)
+    - [Dışlanmış Karakter Seti](#221-dışlanmış-karakter-seti)
   - [Tekrarlar](#23-tekrarlar)
-    - [Yıldız İşareti](#231-yıldız-İşareti)
-    - [Artı İşareti](#232-artı-İşareti)
-    - [Soru İşareti](#233-soru-İşareti)
+    - [Yıldız işareti](#231-yıldız-işareti)
+    - [Artı işareti](#232-artı-işareti)
+    - [Soru işareti](#233-soru-işareti)
   - [Süslü Parantez](#24-süslü-parantez)
   - [Karakter Grubu](#25-karakter-grubu)
       - [Karakter Grubu Olmayanlar](#251-karakter-grubu-olmayanlar)
   - [Değişim](#26-değişim)
-  - [Özel Karakter Hariç Tutma](#27-Özel-karakter-hariç-tutma)
+  - [Özel Karakter Hariç Tutma](#27-özel-karakter-hariç-tutma)
   - [Sabitleyiciler](#28-sabitleyiciler)
-    - [Şapka İşareti](#281-Şapka-İşareti)
-    - [Dolar İşareti](#282-dolar-İşareti)
+    - [Şapka işareti](#281-şapka-işareti)
+    - [Dolar işareti](#282-dolar-işareti)
 - [Kısaltma Karakter Takımları](#3-kısaltma-karakter-takımları)
 - [Bakınmak](#4-bakınmak)
-  - [Olumlu Bakınma](#41-positive-lookahead)
-  - [Olumsuz Bakınma](#42-negative-lookahead)
-  - [Positive Lookbehind](#43-positive-lookbehind)
-  - [Negative Lookbehind](#44-negative-lookbehind)
-- [İşaretler](#5-İşaretler)
+  - [Pozitif ileri bakınma](#41-pozitif-ileri-bakınma)
+  - [Negatif ileri bakınma](#42-negatif-ileri-bakınma)
+  - [Pozitif geri bakınma](#43-pozitif-geri-bakınma)
+  - [Negatif geri bakınma](#44-negatif-geri-bakınma)
+- [İşaretler](#5-i̇şaretler)
   - [Büyük/Küçük Harf Duyarlılığı](#51-büyükküçük-harf-duyarlılığı)
-  - [Bütünsel Arama](#52-genel-arama)
-  - [Çok Satırlı](#53-Çok-satırlı)
+  - [Genel Arama](#52-genel-arama)
+  - [Çok Satırlı](#53-çok-satırlı)
 - [Açgözlü vs Tembel Eşleştirme](#6-açgözlü-vs-tembel-eşleştirme)
 
 ## 1. Temel Eşleştiriciler
@@ -126,7 +126,7 @@ Meta karakterler aşağıdaki gibidir:
 
 |Meta karakter|Açıklama|
 |:----:|----|
-|.|Satır başlangıcı hariç herhangi bir karakterle eşleşir.|
+|.|Satır sonu (yeni satır) hariç herhangi bir karakterle eşleşir.|
 |[ ]|Köşeli parantezler arasında bulunan herhangi bir karakterle eşleşir.|
 |[^ ]|Köşeli parantez içerisinde yer alan `^` işaretinden sonra girilen karakterler haricindeki karakterlerle eşleşir.|
 |*|Kendisinden önce yazılan karakterin sıfır veya daha fazla tekrarı ile eşleşir.|
@@ -141,8 +141,9 @@ Meta karakterler aşağıdaki gibidir:
 
 ## 2.1 Nokta
 
-Nokta `.` meta karakterlerin en basit örneğidir. `.` meta karakteri satır
-başlangıcı hariç herhangi bir karakterle eşleşir. Örneğin, `.ar` düzenli
+Nokta `.` meta karakterlerin en basit örneğidir. `.` meta karakteri herhangi
+bir karakterle eşleşir. Satır başı (carriage return) veya yeni satır
+karakterleriyle eşleşmez. Örneğin, `.ar` düzenli
 ifadesinin anlamı: herhangi bir karakterin ardından `a` harfi ve `r` harfi
 gelir.
 
@@ -168,8 +169,8 @@ harflerinin ardından sırasıyla `h` ve `e` harfi gelir.
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/2ITLQ4/1)
 
-Bununla birlikte, bir karakter takımı içerisindeki bir periyot bir tam periyot
-demektir.
+Bununla birlikte, bir karakter takımı içindeki nokta, gerçek (literal) nokta
+karakteri anlamına gelir.
 
 `ar[.]` düzenli ifadesinin anlamı: Küçük `a` karakteri ardından `r` harfi gelir,
 ardından bir `.` karakteri gelir.
@@ -196,11 +197,11 @@ ardından `a`, ardından `r` gelir.
 
 ## 2.3 Tekrarlar
 
-`+`, `*` ya da `?` meta karakterlerinden sonra bir alt desenin kaç defa tekrar
+`+`, `*` ya da `?` meta karakterleri bir alt desenin kaç defa tekrar
 edebileceğini belirtmek için kullanılır. Bu meta karakterler farklı durumlarda
 farklı davranırlar.
 
-### 2.3.1 Yıldız İşareti
+### 2.3.1 Yıldız işareti
 
 `*` sembolü, kendinden önce girilen eşlemenin sıfır veya daha fazla tekrarıyla
 eşleşir. Ama bir karakter seti ya da sınıf sonrasına girildiğinde, tüm karakter
@@ -230,7 +231,7 @@ küçük `t` karakteri gelir, ardından sıfır veya daha fazla boşluk gelir.
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/gGrwuz/1)
 
-### 2.3.2 Artı İşareti
+### 2.3.2 Artı işareti
 
 `+` sembolü, kendinden önce girilen eşlemenin bir veya daha fazla tekrarıyla
 eşleşir.
@@ -246,7 +247,7 @@ az bir karakter vardır.
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/Dzf9Aa/1)
 
-### 2.3.3 Soru İşareti
+### 2.3.3 Soru işareti
 
 Düzenli ifadelerde `?` meta karakterinden önce girilen karakteri opsiyonel
 olarak tanımlar. Bu sembol önce gelen karakterin sıfır veya bir örneğiyle
@@ -269,7 +270,7 @@ eşleşir.
 
 ## 2.4 Süslü Parantez
 
-Düzenli ifadelerde miktar belirliyiciler olarakda bilinen süslü parantezler, bir
+Düzenli ifadelerde miktar belirleyiciler olarak da bilinen süslü parantezler, bir
 karakterin veya karakter grubunun kaç defa tekrar edebileceğini belirtmek için
 kullanılırlar.
 
@@ -302,7 +303,7 @@ Düzenli ifadeden virgülü kaldırırsak `[0-9]{3}`: doğrudan 3 defa eşleşir
 ## 2.5 Karakter Grubu
 
 Karakter grubu parantezler içine yazılmış alt desenler grubudur. Daha önce
-tasarım deseninde değindiğimiz gibi, bir karakterden önce bir miktar belirleyici
+değindiğimiz gibi, bir karakterden önce bir miktar belirleyici
 koyarsak önceki karakteri tekrar eder. Fakat miktar belirleyiciyi bir karakter
 grubundan sonra koyarsak tüm karakter grubunu tekrarlar.
 
@@ -320,7 +321,7 @@ karakteri, ardından `a` karakteri, ardından `r` karakteri gelir.
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/tUxrBG/1)
 
-Not olarak yakalanan gruplar yalnızca eşleşmez, ayrıca yakalanan karakterler ana dil içinde kullanılır.Bu ana dil Python, JavaScript ve neredeyse herhangi bir dilde düzenli ifadelerin fonksiyon tanımlamalarında olabilir.
+Yakalama grupları karakterlerle yalnızca eşleşmekle kalmaz, aynı zamanda onları ana programlama dilinde kullanılmak üzere yakalar. Bu ana dil Python, JavaScript ya da düzenli ifadeleri destekleyen neredeyse herhangi bir dil olabilir.
 
 ### 2.5.1 Karakter Grubu Olmayanlar
 
@@ -338,14 +339,16 @@ Ayrıca bakınız [4. Bakınmak](#4-bakınmak).
 ## 2.6 Değişim
 
 Düzenli ifadede dik çizgi alternasyon(değişim, dönüşüm) tanımlamak için
-kullanılır. Alternasyon birden fazla ifade arasındaki bir koşul gibidir. Şu an,
+kullanılır. Alternasyon birden fazla ifade arasındaki bir VEYA (OR) koşulu gibidir. Şu an,
 karakter grubu ve alternasyonun aynı şekilde çalıştığını düşünüyor
 olabilirsiniz. Ama, Karakter grubu ve alternasyon arasındaki büyük fark karakter
 grubu karakter düzeyinde çalışır ama alternasyon ifade düzeyinde çalışır.
 
-Örneğin, `(T|t)he|car` düzenli ifadesinin anlamı: Büyük `T` ya da küçük `t`
-karakteri, ardından küçük `h` karakteri, ardından küçük `e` ya da `c` karakteri,
-ardından küçük `a`, ardından küçük `r` karakteri gelir.
+Örneğin, `(T|t)he|car` düzenli ifadesinin anlamı: ya (büyük `T` ya da küçük `t`
+karakteri, ardından küçük `h`, ardından küçük `e` karakteri) YA DA (küçük `c`,
+ardından küçük `a`, ardından küçük `r` karakteri). Parantezleri anlaşılırlık
+için ekledim; parantez içindeki ifadelerden herhangi biri sağlanırsa eşleşme
+gerçekleşir.
 
 <pre>
 "(T|t)he|car" => <a href="#learn-regex"><strong>The</strong></a> <a href="#learn-regex"><strong>car</strong></a> is parked in <a href="#learn-regex"><strong>the</strong></a> garage.
@@ -355,9 +358,8 @@ ardından küçük `a`, ardından küçük `r` karakteri gelir.
 
 ## 2.7 Özel Karakter Hariç Tutma
 
-`\` işareti sonraki karakteri hariç tutmak için kullanılır. Bu bir semboülü
-ayrılmış karakterlerde `{ } [ ] / \ + * . $ ^ | ?` dahil olmak üzere eşleşen bir
-karakter olarak belirtmemizi sağlar. Bir özel karakteri eşleşen bir karakter
+`\` işareti sonraki karakteri hariç tutmak için kullanılır. Bu, `{ } [ ] / \ + * . $ ^ | ?` gibi
+ayrılmış karakterleri eşleşen bir karakter olarak belirtmemizi sağlar. Bir özel karakteri eşleşen bir karakter
 olarak kullanmak için önüne `\` işareti getirin.
 
 Örneğin, `.` düzenli ifadesi yeni satır hariç herhangi bir karakteri eşleştirmek
@@ -384,7 +386,7 @@ ilk karakteri olup olmadığını kontrol eden şapka `^` karakteri, ikinci çe�
 eşleşen karakterin girişin son karakteri olup olmadığını kontrol eden dolar `$`
 karakteridir.
 
-### 2.8.1 Şapka İşareti
+### 2.8.1 Şapka işareti
 
 Şapka `^` işareti eşleşen karakterin giriş harf öbeğinin ilk karakteri olup
 olmadığını kontrol etmek için kullanılır. Eğer `^a` düzenli ifadesini `abc` harf
@@ -410,13 +412,13 @@ karakteri gelir.
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/jXrKne/1)
 
-### 2.8.2 Dolar İşareti
+### 2.8.2 Dolar işareti
 
 Dolar `$` işareti eşleşen karakterin giriş harf öbeğinin son karakteri olup
 olmadığını kontrol etmek için kullanılır.
 
 Örneğin, `(at\.)$` ifadesinin anlamı: küçük bir `a` karakteri, ardından küçük
-bir `t` karakteri, ardıdan nokta `.` karakteri gelir ve bu eşleşme harf öbeğinin
+bir `t` karakteri, ardından nokta `.` karakteri gelir ve bu eşleşme harf öbeğinin
 sonunda olmalıdır.
 
 <pre>
@@ -440,26 +442,28 @@ Kullanılan karakter setlerinin kısaltmaları aşağıdaki gibidir:
 
 |Kısaltma|Açıklama|
 |:----:|----|
-|.|Satır başı hariç herhangi bir karakter|
+|.|Yeni satır hariç herhangi bir karakter|
 |\w|Alfanumerik karakterlerle eşleşir: `[a-zA-Z0-9_]`|
 |\W|Alfanumerik olmayan karakterlerle eşleşir: `[^\w]`|
-|\d|Rakamlarla eşlelir: `[0-9]`|
+|\d|Rakamlarla eşleşir: `[0-9]`|
 |\D|Rakam olmayan karakterlerle eşleşir: `[^\d]`|
 |\s|Boşluk karakteri ile eşleşir: `[\t\n\f\r\p{Z}]`|
 |\S|Boşluk karakteri olmayan karakterlerle eşleşir: `[^\s]`|
 
 ## 4. Bakınmak
 
-Bakınma sembolleri, bir ifade öncesinde veya sonrasında başka bir ifademiz
-olduğunda kullanılırlar.
+Geri bakınma ve ileri bakınma sembolleri (bakınmalar) özel bir ***yakalamayan grup***
+türüdür (bir desenle eşleşmek için kullanılır, ancak bu deseni eşleşme
+listesine dahil etmez). Bakınmalar, bir desenden önce veya sonra başka bir desen
+gelmesi gerektiğinde kullanılır.
 
 Örneğin, `$4.44 ve $10.88` girişlerinden `$` karakteri önündeki tüm sayıları
 almak istiyoruz, bu durumda `(?<=\$)[0-9\.]*` ifadesini kullanırız.
 
-`(?<=\$)[0-9\.]*` ifadesinin anlamı: `.` karakterini içeren ve `$` karakteriyle
-devam eden tüm sayıları al demektir.
+`(?<=\$)[0-9\.]*` ifadesinin anlamı: `.` karakterini içeren ve önünde `$` karakteri
+bulunan tüm sayıları al demektir.
 
-Düzenli ifadelerde kullanılan bakınma sembolleri aşadaki gibidir:
+Düzenli ifadelerde kullanılan bakınma sembolleri aşağıdaki gibidir:
 
 |Sembol|Açıklama|
 |:----:|----|
@@ -468,66 +472,66 @@ Düzenli ifadelerde kullanılan bakınma sembolleri aşadaki gibidir:
 |?<=|Pozitif Geri Bakınma (Verdiğimiz ifade öncesini arar ve `eşleşme varsa` sonuç döndürür.)|
 |?<!|Negatif Geri Bakınma (Verdiğimiz ifade öncesini arar ve `eşleşme yoksa` sonuç döndürür.)|
 
-### 4.1 Pozitif İleri Bakınma
+### 4.1 Pozitif ileri bakınma
 
-Pozitif ileri bakınma, ifadenin ilk bölümü bakınma ifadesiyle devam etmesi
-gerektiğini savunur. Bulunan eşleşme yalnızca ifadenin ilk bölümüyle eşleşen
+Pozitif ileri bakınma, ifadenin ilk bölümünün ardından bakınma ifadesinin
+gelmesi gerektiğini doğrular. Bulunan eşleşme yalnızca ifadenin ilk bölümüyle eşleşen
 metin içerir. Olumlu bir bakınma tanımlamak için, içinde eşittir işareti yer
 alan parantezler `(?=...)` şeklinde kullanılır. Bakınma ifadesi parantezler
 içinde eşittir işaretinden sonra yazılır.
 
-Örneğin, `[T|t]he(?=\sfat)` ifadesinin anlamı: opsiyonel küçük bir `t` ya da
+Örneğin, `(T|t)he(?=\sfat)` ifadesinin anlamı: küçük bir `t` ya da
 büyük `T` harfi, ardından `h` harfi gelir, ardından `e` harfi gelir. Parantez
 içinde ise bu dizilimin bir boşluk karakterinden sonra `fat` öbeğiyle devam
 edeceğini tanımlıyoruz.
 
 <pre>
-"[T|t]he(?=\sfat)" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
+"(T|t)he(?=\sfat)" => <a href="#learn-regex"><strong>The</strong></a> fat cat sat on the mat.
 </pre>
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/IDDARt/1)
 
-### 4.2 Negatif İleri Bakınma
+### 4.2 Negatif ileri bakınma
 
-Negatif ileri bakınma sembolü positive lookahead tersine, verdiğimiz desenle devam
+Negatif ileri bakınma sembolü pozitif ileri bakınmanın tersine, verdiğimiz desenle devam
 etmemesi durumunda eşleşir. Bu sembol pozitif ileri bakınma gibi tanımlanır ama `=`
 işareti yerine `!` kullanılır.
 
-`[T|t]he(?!\sfat)` ifadesinin anlamı: opsiyonel küçük bir `t` ya da büyük `T`
+`(T|t)he(?!\sfat)` ifadesinin anlamı: küçük bir `t` ya da büyük `T`
 harfi, ardından `h` harfi gelir, ardından `e` harfi gelir, ardından öncesinde
 boşluk olan bir `fat` öbeği olmamalıdır.
 
 
 <pre>
-"[T|t]he(?!\sfat)" => The fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
+"(T|t)he(?!\sfat)" => The fat cat sat on <a href="#learn-regex"><strong>the</strong></a> mat.
 </pre>
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/V32Npg/1)
 
-### 4.3 Pozitif Geri Bakınma
+### 4.3 Pozitif geri bakınma
 
 Pozitif geri bakınma, belirli bir desenden önceki eşleşmeleri almak için
 kullanılır. `(?<=...)` ile gösterilir.
 
-Örneğin, `(?<=[T|t]he\s)(fat|mat)` ifadesinin anlamı: Öncesinde `The` veya `the`
+Örneğin, `(?<=(T|t)he\s)(fat|mat)` ifadesinin anlamı: Öncesinde `The` veya `the`
 öbekleri olan tüm `fat` veya `mat` öbeklerini getir.
 
 <pre>
-"(?<=[T|t]he\s)(fat|mat)" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the <a href="#learn-regex"><strong>mat</strong></a>.
+"(?<=(T|t)he\s)(fat|mat)" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the <a href="#learn-regex"><strong>mat</strong></a>.
 </pre>
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/avH165/1)
 
-### 4.4 Negatif Geri Bakınma
+### 4.4 Negatif geri bakınma
 
 Negatif geri bakınma, belirli bir desenden önce olmayan eşleşmeleri almak için
-kullanılır. `(?<=!..)` ile gösterilir.
+kullanılır. `(?<!...)` ile gösterilir.
 
 Örneğin, `(?<!(T|t)he\s)(cat)` ifadesinin anlamı: Öncesinde `The` veya `the`
 öbekleri yer almayan tüm `cat` öbeklerini getir.
 
 <pre>
-"(?&lt;![T|t]he\s)(cat)" => The cat sat on <a href="#learn-regex"><strong>cat</strong></a>.
+"(?&lt;!(T|t)he\s)(cat)" => The cat sat on <a href="#learn-regex"><strong>cat</strong></a>.
 </pre>
 
 [Düzenli ifadeyi test edin](https://regex101.com/r/8Efx5G/1)
@@ -542,7 +546,7 @@ parçasıdırlar.
 |İşaret|Açıklama|
 |:----:|----|
 |i|Büyük küçük harf duyarlılık: Eşleştirmeleri küçük/büyük harfe karşı duyarsız yapar.|
-|g|Genel Arama: Girilen harf öbeği boyunca bir desen arar.|
+|g|Genel Arama: Yalnızca ilk eşleşmeyi değil, tüm eşleşmeleri bulur.|
 |m|Çok satırlı: Sabitleyici meta karakteri her satırda çalışır.|
 
 ### 5.1 Büyük/Küçük Harf Duyarlılığı
@@ -551,7 +555,7 @@ parçasıdırlar.
 
 Örneğin, `/The/gi` ifadesi: büyük `T` harfi, ardından küçük `h` harfi, ardından
 küçük `e` harfi gelir. ifadenin sonunda yer alan `i` işareti büyük-küçük harfe
-karşı duyarsız olması gerektiğini belirtir. Ayrıca `g` işaretinide
+karşı duyarsız olması gerektiğini belirtir. Ayrıca `g` işaretini de
 kullandığımızı görebilirsiniz, tüm text içinde bu aramayı yapmak istediğimiz
 için `g` işaretini ayrıca belirtiyoruz.
 
@@ -569,8 +573,13 @@ için `g` işaretini ayrıca belirtiyoruz.
 
 ### 5.2 Genel Arama
 
-`g` işareti bir giriş içinde eşleşen tüm varsayonları bulmak için kullanılır.
+`g` işareti bir giriş içindeki tüm eşleşmeleri bulmak için kullanılır.
 `g` işareti kullanılmazsa ilk eşleşme bulunduktan sonra arama sona erer.
+
+Örneğin, `/.(at)/g` ifadesinin anlamı: yeni satır hariç herhangi bir karakter,
+ardından küçük `a`, ardından küçük `t` harfi gelir. İfadenin sonunda `g`
+işaretini kullandığımız için, yalnızca ilk eşleşmeyi (varsayılan davranış)
+değil, giriş içindeki tüm eşleşmeleri bulur.
 
 <pre>
 "/.(at)/" => The <a href="#learn-regex"><strong>fat</strong></a> cat sat on the mat.
@@ -592,7 +601,7 @@ sabitleyicilerde gördüğümüz gibi `(^, $)` sembolleri aradığımız desenin
 Bu sabitleyicilerin tüm satırlarda çalışması için `m` işaretini kullanırız.
 
 Örneğin, `/at(.)?$/gm` ifadesinin anlamı: küçük `a` harfi, ardından küçük `t`
-harfi gelir, ardından opsiyonel olarak yeni satır hariç herhangi birşey
+harfi gelir, ardından opsiyonel olarak yeni satır hariç herhangi bir şey
 gelebilir. `m` işaretini kullandığımız için bir girişin her satırının sonunda
 eşleştirir.
 
@@ -614,7 +623,8 @@ eşleştirir.
 
 ## 6. Açgözlü vs Tembel Eşleştirme
 
-Varsayılan olarak, bir düzenli ifade açgözlü bir eşleştirme yapacaktır, bu da eşleşmenin mümkün olduğu kadar çok olacağı anlamına gelir. Tembel bir şekilde eşleştirmek için `?` kullanabiliriz, bu da eşleşme olabildiğince kısa olacaktır.
+Varsayılan olarak, bir düzenli ifade açgözlü bir eşleştirme yapacaktır, bu da eşleşmenin mümkün olduğu kadar çok olacağı anlamına gelir. Tembel bir şekilde eşleştirmek için `?` kullanabiliriz, bu durumda eşleşme olabildiğince kısa olur.
+
 <pre>
 "/(.*at)/" => <a href="#learn-regex"><strong>The fat cat sat on the mat</strong></a>. </pre>
 
@@ -630,7 +640,7 @@ Varsayılan olarak, bir düzenli ifade açgözlü bir eşleştirme yapacaktır, 
 ## Katkı Sağla
 
 * Hataları Raporla
-* İyileştirmeler iç Pull Request aç
+* İyileştirmeler için Pull Request aç
 * Paylaş
 * Geri bildirim için [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ziishaned.svg?style=social&label=Follow%20%40ziishaned)](https://twitter.com/ziishaned)'den eriş
 
