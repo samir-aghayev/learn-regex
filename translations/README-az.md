@@ -592,10 +592,11 @@ qədər qısa olacaq.
 
 ## Töhfə vermək
 
-* Təkmilləşdirmələrlə pull request açın
-* Fikirlərinizi issue-larda müzakirə edin
-* Layihə haqqında başqalarına danışın
+* Təkmilləşdirmə təklifləri ilə [pull request](https://github.com/ziishaned/learn-regex/pulls) açın
+* Fikirlərinizi [issue](https://github.com/ziishaned/learn-regex/issues)-larda müzakirə edin
+* Layihəni başqaları ilə paylaşın
+* Rəy bildirmək üçün: [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ziishaned.svg?style=social&label=Follow%20%40ziishaned)](https://twitter.com/ziishaned)
 
 ## Lisenziya
 
-MIT &copy; Zeeshan Ahmad
+MIT &copy; [Zeeshan Ahmad](https://twitter.com/ziishaned)
