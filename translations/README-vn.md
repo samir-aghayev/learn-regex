@@ -34,6 +34,7 @@
 * [Tiếng Việt](../translations/README-vn.md)
 * [فارسی](../translations/README-fa.md)
 * [עברית](../translations/README-he.md)
+* [Azərbaycanca](../translations/README-az.md)
 
 
 ## Biểu thức chính quy là gì?

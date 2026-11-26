@@ -33,6 +33,7 @@
 * [Tiếng Việt](../translations/README-vn.md)
 * [فارسی](../translations/README-fa.md)
 * [עברית](../translations/README-he.md)
+* [Azərbaycanca](../translations/README-az.md)
 ## Co to jest wyrażenie regularne?
 
 [![](https://img.shields.io/badge/-Download%20PDF%20-0a0a0a.svg?style=flat&colorA=0a0a0a)](https://gum.co/learn-regex)

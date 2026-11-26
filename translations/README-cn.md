@@ -33,6 +33,7 @@
 * [Tiếng Việt](../translations/README-vn.md)
 * [فارسی](../translations/README-fa.md)
 * [עברית](../translations/README-he.md)
+* [Azərbaycanca](../translations/README-az.md)
 
 ## 什么是正则表达式？
 

@@ -24,6 +24,7 @@
 * [Tiếng Việt](translations/README-vn.md)
 * [فارسی](translations/README-fa.md)
 * [עברית](translations/README-he.md)
+* [Azərbaycanca](translations/README-az.md)
 
 
 ## Cosa sono le Espressioni Regolari?
